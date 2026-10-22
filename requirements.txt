@@ -1,0 +1,8 @@
+tensorflow>=2.16
+librosa>=0.10
+numpy
+scipy
+scikit-learn
+joblib
+soundfile
+streamlit>=1.57

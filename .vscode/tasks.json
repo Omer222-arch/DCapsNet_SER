@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run DCapsNet Streamlit app",
+			"type": "shell",
+			"command": ".\\.venv\\Scripts\\streamlit.exe",
+			"args": [
+				"run",
+				"streamlit_app.py",
+				"--server.headless",
+				"true",
+				"--server.port",
+				"8501"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}
