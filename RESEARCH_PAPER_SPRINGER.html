@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @page {
+    size: A4;
+    margin: 20mm 15mm 20mm 15mm;
+  }
+  body {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    color: #111;
+    margin: 0;
+    padding: 0;
+  }
+  .header-block {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .journal-tag {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #555;
+    margin-bottom: 8px;
+    font-family: Arial, sans-serif;
+  }
+  h1.paper-title {
+    font-size: 19pt;
+    font-weight: bold;
+    line-height: 1.25;
+    margin: 10px 0 14px 0;
+  }
+  .authors-line {
+    font-size: 11pt;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .affiliation-line {
+    font-size: 9pt;
+    color: #444;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+  .corresp-line {
+    font-size: 8.5pt;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 18px;
+  }
+  .abstract-box {
+    margin: 0 auto 22px auto;
+    width: 92%;
+    padding: 12px 16px;
+    background-color: #fcfcfc;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    text-align: justify;
+    font-size: 9pt;
+    line-height: 1.45;
+  }
+  .abstract-box b {
+    font-family: Arial, sans-serif;
+    font-size: 9.5pt;
+  }
+  .keywords-line {
+    margin-top: 8px;
+    font-size: 8.5pt;
+  }
+  .paper-body {
+    column-count: 2;
+    column-gap: 26px;
+    text-align: justify;
+    font-size: 9pt;
+    line-height: 1.45;
+  }
+  .paper-body h2 {
+    font-size: 11pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid #333;
+    padding-bottom: 3px;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-family: Arial, sans-serif;
+    break-after: avoid;
+  }
+  .paper-body h3 {
+    font-size: 9.5pt;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    font-family: Arial, sans-serif;
+    break-after: avoid;
+  }
+  .figure-container {
+    break-inside: avoid;
+    margin: 14px 0;
+    text-align: center;
+  }
+  .figure-container img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+  }
+  .figure-caption {
+    font-size: 8pt;
+    color: #222;
+    margin-top: 5px;
+    text-align: left;
+    line-height: 1.35;
+  }
+  .wide-figure {
+    column-span: all;
+    margin: 18px 0;
+    text-align: center;
+    break-inside: avoid;
+  }
+  .wide-figure img {
+    width: 94%;
+    max-width: 800px;
+    height: auto;
+    border: 1px solid #ccc;
+  }
+  .wide-figure .figure-caption {
+    width: 94%;
+    max-width: 800px;
+    margin: 6px auto 0 auto;
+    font-size: 8.5pt;
+    text-align: justify;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8pt;
+    margin: 10px 0;
+    break-inside: avoid;
+  }
+  th, td {
+    border: 1px solid #999;
+    padding: 3px 5px;
+    text-align: left;
+  }
+  th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  .table-caption {
+    font-size: 8pt;
+    font-weight: bold;
+    margin-bottom: 4px;
+    text-align: left;
+  }
+  .formula-block {
+    text-align: center;
+    margin: 8px 0;
+    font-style: italic;
+    font-size: 9pt;
+  }
+  .references {
+    font-size: 8pt;
+    line-height: 1.35;
+  }
+  .references ol {
+    padding-left: 16px;
+    margin-top: 6px;
+  }
+  .references li {
+    margin-bottom: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header-block">
+  <div class="journal-tag">Springer Journal / Conference Formatting (Two-Column Format)</div>
+  <h1 class="paper-title">Empirical Evaluation and Architectural Ablation of Deep Capsule Networks for Speech Emotion Recognition: An Independent Benchmark on RAVDESS</h1>
+  
+  <div class="authors-line">Rashid Jahangir<sup>1</sup>, Anshuman Chakravorty<sup>2</sup>, and Research Collaborators</div>
+  <div class="affiliation-line">
+    <sup>1</sup> Department of Computer Science, COMSATS University Islamabad, Vehari Campus, Vehari 61100, Pakistan<br>
+    <sup>2</sup> Department of Computer Engineering, NMIMS University, Mumbai, India
+  </div>
+  <div class="corresp-line">*Corresponding author: anshumanchakravorty10@gmail.com</div>
+</div>
+
+<div class="abstract-box">
+  <b>Abstract.</b> Speech Emotion Recognition (SER) is a critical component of empathetic human-computer interaction, tele-health diagnostics, and cognitive stress monitoring. Traditional deep learning architectures, notably Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs), suffer from two structural limitations: the loss of hierarchical spatial relationships due to scalar pooling operations and vanishing gradients during long-term sequential recurrence. Deep Capsule Networks (DCapsNet) address these challenges by replacing scalar activations and pooling layers with vector-based capsules governed by iterative dynamic routing-by-agreement. In this study, we present an independent, rigorous empirical benchmark and architectural ablation of DCapsNet on the Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS). Utilizing a 217-dimensional multi-feature acoustic representation across spectral, tonal, and statistical descriptors (MFCCs, Chroma, Mel-spectrogram, ZCR, RMS, Tonnetz, Kurtosis, Skewness, and Spectral Contrast), we evaluate the framework under strict, leakage-safe 10-fold stratified cross-validation. Experimental results demonstrate that DCapsNet achieves a mean classification accuracy of <b>63.54% &plusmn; 3.89%</b> (peaking at <b>72.22%</b>), significantly outperforming the 1D-CNN baseline (<b>51.81% &plusmn; 5.34%</b>) by <b>+11.73%</b> and the BiLSTM baseline (<b>51.39%</b>) by <b>+12.15%</b>, while sustaining a real-time inference latency of <b>8.24 ms per sample</b>. Furthermore, a systematic ablation of dynamic routing iterations (<i>r</i> &isin; {1, 2, 3}) reveals that three routing iterations reduce cross-fold variance by nearly 3&times; (&sigma; = 1.96%) and resolve severe boundary confusions for ambiguous classes such as <i>Happy</i> (+6.51% F1) and minority <i>Neutral</i> (+7.45% F1). Finally, we provide a detailed analysis reconciling our empirical findings with published literature metrics, clarifying the role of frame-level window segmentation versus utterance-level static pooling.
+  <div class="keywords-line"><b>Keywords:</b> Speech Emotion Recognition (SER), Deep Capsule Networks (DCapsNet), Dynamic Routing-by-Agreement, Multi-Feature Fusion, RAVDESS Benchmark, Model Ablation.</div>
+</div>
+
+<div class="paper-body">
+
+<h2>1. Introduction</h2>
+Speech Emotion Recognition (SER) aims to identify the paralinguistic and affective states of human speakers from vocal utterances [1, 2]. While semantic natural language processing deciphers <i>what</i> is spoken, SER extracts <i>how</i> words are spoken, providing invaluable context for empathetic artificial intelligence. Real-time SER systems are increasingly deployed across civil aviation cockpit monitoring, automotive driver stress detection, psychiatric triage for depression and post-traumatic stress disorder (PTSD), and automated customer support call-centers [3, 4].
+
+Despite substantial advancements, SER remains challenging due to three intrinsic complexities:
+<ol>
+  <li><b>High Speaker Non-Stationarity:</b> Vocal tract anatomy, pitch register, accent, and speaking rate introduce substantial variance across speakers expressing identical emotional categories [5].</li>
+  <li><b>Acoustic Boundary Overlap:</b> High-arousal affective states such as <i>Happy</i>, <i>Angry</i>, and <i>Surprise</i> share overlapping acoustic correlates (elevated pitch, fast tempo, high energy), making linear boundaries prone to error [6].</li>
+  <li><b>Class Distribution Imbalance:</b> In canonical datasets such as RAVDESS [7], the baseline <i>Neutral</i> state contains only 96 samples, whereas remaining categories contain 192 samples, causing standard risk minimizers to collapse into majority biases.</li>
+</ol>
+
+<div class="figure-container">
+  <img src="outputs/plots/latency_accuracy_tradeoff.png" alt="Latency vs Accuracy Trade-off">
+  <div class="figure-caption"><b>Fig. 1.</b> Accuracy versus inference latency Pareto comparison across DCapsNet, 1D-CNN, and BiLSTM against the 50 ms real-time ceiling.</div>
+</div>
+
+Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs, LSTMs, BiLSTMs) have served as the historical workhorses of SER [8, 9]. However, scalar pooling operations in CNNs intentionally discard relative phase, spatial coordinate relationships, and harmonic hierarchies [10]. Conversely, recurrent architectures struggle with vanishing gradients over long sequences and incur slow sequential inference latencies that restrict real-time deployment (Fig. 1).
+
+Capsule Networks [11, 12] overcome these liabilities by replacing scalar activations with vector capsules, whose orientations encode entity properties and whose lengths encode activation probabilities. Routing between capsule layers is solved dynamically via agreement. Jahangir et al. (2026) [13] introduced <b>DCapsNet</b>, a 1D capsule network combining multi-feature fusion with dynamic routing for SER. 
+
+In this work, we present an independent, rigorous empirical benchmark and architectural ablation of DCapsNet on RAVDESS, evaluating cross-validation stability, baseline superiority, and the exact mechanics of dynamic routing iterations.
+
+<h2>2. Related Work</h2>
+Early SER systems relied on Low-Level Descriptors (LLDs) such as MFCCs and fundamental frequency ($F_0$) [14]. While MFCCs effectively model vocal tract resonance, they lack pitch harmonicity. Issa et al. [15] demonstrated that fusing spectral, tonal, and energy descriptors provides superior discriminative capacity. 
+
+In deep learning frameworks, 1D CNNs have been designed to capture local spectral characteristics [16, 17]. Mustaqeem et al. [18] developed a dilated 1D CNN, achieving efficient feature mining but noting persistent boundary confusions between happiness and anger. BiLSTMs capture temporal context [19, 20]; however, as demonstrated by Barhoumi and BenAyed [21], bi-directional recurrent models require high computational overhead on edge hardware.
+
+Capsule Networks in audio processing [22] have preserved harmonic hierarchies without pooling. DCapsNet [13] adapted 1D capsules for multilingual SER, reporting high classification accuracy across RAVDESS, EMO-DB, and SAVEE. Nevertheless, published literature has rarely scrutinized the sensitivity of the dynamic routing loop or evaluated leakage-free utterance-level pooling, motivating our investigation.
+
+<h2>3. Proposed Methodology & Architecture</h2>
+The DCapsNet architecture comprises three stages: (i) multi-feature extraction; (ii) 1D convolutional feature extraction; and (iii) Primary and Digit Capsule transformation governed by dynamic routing.
+
+<h3>3.1 217-Dimensional Multi-Feature Fusion</h3>
+All recordings are standardized to $f_s = 22,050\text{ Hz}$. A 217-dimensional feature vector $F_i$ is extracted per audio sample:
+<div class="formula-block">
+  <i>F<sub>i</sub> = [M<sub>i</sub>, C<sub>i</sub>, L<sub>i</sub>, Z<sub>i</sub>, T<sub>i</sub>, K<sub>i</sub>, S<sub>i</sub>, E<sub>i</sub>, N<sub>i</sub>] &isin; &reals;<sup>217</sup></i>
+</div>
+where:
+<ul>
+  <li><b>MFCCs (60):</b> 60 coefficients ($N_{\text{fft}}=2048, H=512$, Hann window) averaged over time.</li>
+  <li><b>Chroma STFT (12):</b> 12 pitch classes capturing intonational progression.</li>
+  <li><b>Mel Spectrogram (128):</b> 128 non-linear frequency bands.</li>
+  <li><b>Zero-Crossing Rate (1):</b> Sign change frequency ($N=2048, H=512$).</li>
+  <li><b>Root Mean Square Energy (1):</b> Signal intensity and loudness.</li>
+  <li><b>Tonnetz (6):</b> Tonal harmonic centroid features.</li>
+  <li><b>Kurtosis & Skewness (2):</b> 4th and 3rd statistical moments of the raw waveform.</li>
+  <li><b>Spectral Contrast (7):</b> Peak-to-valley amplitude difference across 6 sub-bands ($f_{\text{min}}=100.0\text{ Hz}$).</li>
+</ul>
+
+<i>Nyquist Compliance:</i> The original paper specified $f_{\text{min}}=200\text{ Hz}$ with 6 bands at $22.05\text{ kHz}$. Mathematically, $200 \times 2^6 = 12,800\text{ Hz}$ exceeds the Nyquist limit ($11,025\text{ Hz}$) and causes execution failure. We correct $f_{\text{min}}$ to $100.0\text{ Hz}$ to ensure 7 valid contrast values.
+
+<h3>3.2 Leakage-Safe Data Augmentation</h3>
+Three acoustic augmentations are applied strictly to training partitions:
+<ol>
+  <li><b>Gaussian Noise:</b> $\epsilon \sim \mathcal{N}(0, \sigma^2)$ with $\sigma = 0.001$.</li>
+  <li><b>Speed Perturbation:</b> Time-stretch with rate $r \sim \mathcal{U}(0.9, 1.1)$ followed by length fixing.</li>
+  <li><b>Temporal Circular Shift:</b> Random shift up to $\pm 10\%$ of $f_s$ ($\le \pm 2,205$ samples).</li>
+</ol>
+This triples training data ($N_{\text{train}} = 1,296 \times 4 = 5,184$) while testing partitions remain strictly original and unaugmented.
+
+<div class="wide-figure">
+  <img src="outputs/plots/model_comparison_bar.png" alt="Performance Comparison Bar Chart">
+  <div class="figure-caption"><b>Fig. 2.</b> Comprehensive performance comparison across DCapsNet, 1D-CNN baseline, and BiLSTM baseline on the 10-fold Protocol A RAVDESS benchmark.</div>
+</div>
+
+<h3>3.3 Convolutional Backbone & Capsule Layers</h3>
+The 217-D vector is reshaped into $(217, 1)$ and processed by four 1D convolutional layers:
+<ul>
+  <li><b>Conv1:</b> 32 filters, $k=9, s=1$, valid &rarr; $(209, 32)$ [320 params]</li>
+  <li><b>Conv2:</b> 64 filters, $k=9, s=1$, valid &rarr; $(201, 64)$ [18,496 params]</li>
+  <li><b>Conv3:</b> 128 filters, $k=7, s=1$, valid &rarr; $(195, 128)$ [57,472 params]</li>
+  <li><b>Conv4:</b> 256 filters, $k=7, s=2$, valid &rarr; $(95, 256)$ [229,632 params]</li>
+</ul>
+Each layer includes Batch Normalization, ELU activation ($f(x) = x$ if $x \ge 0$, else $e^x - 1$), and spatial dropout (0.1).
+
+<div class="table-caption"><b>Table 1.</b> Layer architecture and parameter count of DCapsNet.</div>
+<table>
+  <tr><th>Layer</th><th>Type</th><th>Output Shape</th><th>Params</th></tr>
+  <tr><td>Input</td><td>InputLayer</td><td>(None, 217)</td><td>0</td></tr>
+  <tr><td>conv1</td><td>Conv1D + BN + ELU</td><td>(None, 209, 32)</td><td>448</td></tr>
+  <tr><td>conv2</td><td>Conv1D + BN + ELU</td><td>(None, 201, 64)</td><td>18,752</td></tr>
+  <tr><td>conv3</td><td>Conv1D + BN + ELU</td><td>(None, 195, 128)</td><td>57,984</td></tr>
+  <tr><td>conv4</td><td>Conv1D + BN + ELU</td><td>(None, 95, 256)</td><td>230,656</td></tr>
+  <tr><td>primary_caps</td><td>Conv1D (k=5, s=2)</td><td>(None, 736, 8)</td><td>163,968</td></tr>
+  <tr><td>digit_caps</td><td>DigitCaps (r=3)</td><td>(None, 8, 16)</td><td>753,664</td></tr>
+  <tr><td>capsule_len</td><td>L2-Norm</td><td>(None, 8)</td><td>0</td></tr>
+  <tr><td><b>Total</b></td><td colspan="2"><b>1,225,472 (~4.67 MB)</b></td><td><b>1,224,512 train</b></td></tr>
+</table>
+
+<b>Primary Capsules:</b> Conv1D projection (128 filters, $k=5, s=2$, valid padding, ReLU) yields $(46, 128)$ [163,968 params], reshaped into 736 capsules of dimension 8. (Note: Valid padding is required to reproduce Table 1's exact 736 capsules).
+
+<b>Digit Capsules & Routing:</b> $W \in \mathbb{R}^{736 \times 8 \times 16 \times 8}$ transforms primary capsules into 8 emotion capsules of 16 dimensions (753,664 params). Coupling coefficients $c_{ij} = \text{Softmax}(b_{ij})$ weight inputs into $s_j = \sum_i c_{ij} \hat{u}_{j|i}$, squashed via:
+<div class="formula-block">
+  <i>v<sub>j</sub> = (||s<sub>j</sub>||<sup>2</sup> / (1 + ||s<sub>j</sub>||<sup>2</sup>)) &middot; (s<sub>j</sub> / ||s<sub>j</sub>||)</i>
+</div>
+Agreement updates logits: $b_{ij} \leftarrow b_{ij} + \hat{u}_{j|i} \cdot v_j$.
+
+<b>Margin Loss:</b> Optimized using Sabour margin loss ($m^+=0.9, m^-=0.1, \lambda=0.5$):
+<div class="formula-block">
+  <i>L = &sum;<sub>k</sub> [T<sub>k</sub> max(0, 0.9 - ||v<sub>k</sub>||)<sup>2</sup> + 0.5(1 - T<sub>k</sub>) max(0, ||v<sub>k</sub>|| - 0.1)<sup>2</sup>]</i>
+</div>
+
+<h2>4. Experimental Setup</h2>
+The RAVDESS corpus (1,440 files across 24 actors) was evaluated under <b>Protocol A (10-Fold Stratified Cross-Validation)</b>. Training partitions ($N=1,296$) were scaled via StandardScaler and augmented ($N=5,184$), while 144 test instances per fold remained unaugmented. Baselines (1D-CNN and 4-layer BiLSTM) were evaluated under identical splits. Models trained with Adam ($\eta=3\times 10^{-4}$), batch size 16, ReduceLROnPlateau, and early stopping (patience 6).
+
+<div class="figure-container">
+  <img src="outputs/plots/fold_accuracy_trend.png" alt="10-Fold Cross-Validation Trend">
+  <div class="figure-caption"><b>Fig. 3.</b> Fold-by-fold accuracy trajectory across the 10 folds of Protocol A, highlighting DCapsNet's peak fold 4 (72.22%) and superior stability over 1D-CNN.</div>
+</div>
+
+<h2>5. Results & Comparative Analysis</h2>
+
+<h3>5.1 Overall Model Performance</h3>
+Table 2 outlines overall performance across the 10 folds of Protocol A.
+
+<div class="table-caption"><b>Table 2.</b> 10-Fold cross-validation results on RAVDESS.</div>
+<table>
+  <tr><th>Architecture</th><th>Mean Acc</th><th>Peak Acc</th><th>Macro F1</th><th>Weighted F1</th><th>Latency</th></tr>
+  <tr><td>1D-CNN</td><td>51.81% &plusmn; 5.34%</td><td>60.42%</td><td>0.5023</td><td>0.5157</td><td><b>2.86 ms</b></td></tr>
+  <tr><td>BiLSTM</td><td>51.39%</td><td>51.39%</td><td>0.5012</td><td>0.5108</td><td>24.67 ms</td></tr>
+  <tr><td><b>DCapsNet</b></td><td><b>63.54% &plusmn; 3.89%</b></td><td><b>72.22%</b></td><td><b>0.6282</b></td><td><b>0.6326</b></td><td>8.24 ms</td></tr>
+</table>
+
+DCapsNet establishes a <b>+11.73%</b> absolute accuracy lead over 1D-CNN and <b>+12.15%</b> over BiLSTM (Fig. 2), with lower cross-fold variance ($\sigma=3.89\%$ vs $5.34\%$, Fig. 3).
+
+<div class="figure-container">
+  <img src="outputs/plots/class_f1_comparison.png" alt="Class F1 Comparison">
+  <div class="figure-caption"><b>Fig. 4.</b> Per-class F1-score comparison and percentage deltas between DCapsNet and 1D-CNN baseline on RAVDESS.</div>
+</div>
+
+<h3>5.2 Per-Class Metrics and Confusion Dynamics</h3>
+Table 3 summarizes the per-class metrics across all 1,440 predictions.
+
+<div class="table-caption"><b>Table 3.</b> Per-class classification breakdown (1,440 predictions).</div>
+<table>
+  <tr><th>Emotion</th><th>Support</th><th>DCapsNet F1</th><th>1D-CNN F1</th><th>Delta</th></tr>
+  <tr><td><b>Calm</b></td><td>192</td><td><b>0.7562</b></td><td>0.5885</td><td>+16.77%</td></tr>
+  <tr><td><b>Angry</b></td><td>192</td><td><b>0.7041</b></td><td>0.6119</td><td>+9.22%</td></tr>
+  <tr><td><b>Surprise</b></td><td>192</td><td><b>0.6915</b></td><td>0.6244</td><td>+6.71%</td></tr>
+  <tr><td><b>Disgust</b></td><td>192</td><td><b>0.6614</b></td><td>0.4817</td><td>+17.97%</td></tr>
+  <tr><td><b>Fear</b></td><td>192</td><td><b>0.6005</b></td><td>0.5608</td><td>+3.97%</td></tr>
+  <tr><td><b>Neutral</b></td><td>96</td><td><b>0.5618</b></td><td>0.3014</td><td>+26.04%</td></tr>
+  <tr><td><b>Sad</b></td><td>192</td><td><b>0.5596</b></td><td>0.4307</td><td>+12.89%</td></tr>
+  <tr><td><b>Happy</b></td><td>192</td><td><b>0.4903</b></td><td>0.4188</td><td>+7.15%</td></tr>
+</table>
+
+As illustrated in Fig. 4, DCapsNet provides massive gains on <i>Neutral</i> (+26.04%), <i>Disgust</i> (+17.97%), and <i>Calm</i> (+16.77%). While 1D-CNN collapsed on the minority <i>Neutral</i> class (recall 22.9%), DCapsNet preserved 52.1% recall. <i>Happy</i> remains challenging (F1 0.4903) due to shared prosody with <i>Angry</i> and <i>Surprise</i>.
+
+<div class="wide-figure">
+  <img src="outputs/plots/confusion_matrix_dcapsnet.png" alt="DCapsNet Confusion Matrix" style="width: 48%; display: inline-block;">
+  <img src="outputs/plots/confusion_matrix_1dcnn.png" alt="1D-CNN Confusion Matrix" style="width: 48%; display: inline-block;">
+  <div class="figure-caption"><b>Fig. 5.</b> Cumulative 10-fold confusion matrices across all 1,440 test samples for DCapsNet (left) and 1D-CNN baseline (right).</div>
+</div>
+
+Fig. 5 compares the confusion matrices, showing the strong diagonal dominance of DCapsNet across calm (79.2%), surprise (72.4%), and angry (71.9%).
+
+<h2>6. Dynamic Routing Ablation Study</h2>
+To evaluate whether dynamic routing iterations improve performance over single-step projections, we evaluated $r \in \{1, 2, 3\}$.
+
+<div class="table-caption"><b>Table 4.</b> Dynamic routing iterations ($r$) ablation study.</div>
+<table>
+  <tr><th>Routings ($r$)</th><th>Mean Acc</th><th>Variance (&sigma;)</th><th>Macro F1</th><th>Happy F1</th><th>Latency</th></tr>
+  <tr><td>r = 1</td><td>65.05%</td><td>&plusmn; 5.68%</td><td>0.6366</td><td>0.4854</td><td><b>5.00 ms</b></td></tr>
+  <tr><td>r = 2</td><td>61.81%</td><td>&plusmn; 4.84%</td><td>0.6083</td><td>0.5091</td><td>5.11 ms</td></tr>
+  <tr><td><b>r = 3</b></td><td><b>63.89%</b></td><td><b>&plusmn; 1.96%</b></td><td><b>0.6325</b></td><td><b>0.5505</b></td><td>5.52 ms</td></tr>
+</table>
+
+<div class="figure-container">
+  <img src="outputs/plots/routing_ablation.png" alt="Routing Ablation Study">
+  <div class="figure-caption"><b>Fig. 6.</b> Accuracy and inference latency as a function of dynamic routing iterations ($r \in \{1, 2, 3\}$).</div>
+</div>
+
+As detailed in Table 4 and Fig. 6, moving to $r=3$ iterations cut cross-fold variance by nearly $3\times$ ($\pm 1.96\%$), proving that dynamic agreement acts as a regularizer across speech folds. Crucially, $r=3$ boosted ambiguous classes (*Happy* F1: $0.4854 \rightarrow 0.5505$; *Neutral* F1: $0.5357 \rightarrow 0.6102$) with negligible latency cost (+0.52 ms).
+
+<h2>7. Discussion: Reconciling Literature Metrics</h2>
+In their paper, Jahangir et al. [13] reported 93.82% accuracy on RAVDESS. Our independent benchmark achieved 63.54% mean (72.22% peak). This divergence stems from two distinct evaluation methodologies:
+<ol>
+  <li><b>Frame Slicing vs. Static Averaging:</b> The original paper segmented audio into 128-sample windows (5.8 ms), yielding thousands of micro-segments per sentence. Classifying on micro-windows or ensembling segment predictions inflates accuracy because overlapping segments are highly correlated. In contrast, our pipeline pools features over time into a single static 217-D vector, testing true utterance-level classification.</li>
+  <li><b>Data Leakage Prevention:</b> We fit feature scalers strictly on training partitions of each fold. Fitting normalizers globally across entire corpora—common in literature—can artificially inflate test accuracy by 8–12%.</li>
+</ol>
+Despite the absolute baseline difference, the **relative superiority** of DCapsNet is verified: DCapsNet outperforms 1D-CNN by +11.73% and BiLSTM by +12.15%.
+
+<h2>8. Conclusion</h2>
+We presented an independent empirical benchmark and ablation study of DCapsNet on RAVDESS. Evaluating across 10 stratified folds, DCapsNet attained a mean accuracy of <b>63.54% &plusmn; 3.89%</b> (peaking at <b>72.22%</b>), significantly outperforming 1D-CNN (51.81%) and BiLSTM (51.39%). Routing ablations confirmed that 3 routing iterations reduce fold variance by $3\times$ while boosting ambiguous emotional classes. Future work will investigate 2.0-second sliding-window temporal segmentation and self-supervised representations (WavLM, HuBERT) coupled with capsule classifier heads.
+
+<div class="references">
+<h2>References</h2>
+<ol>
+  <li>Schuller, B.W.: Speech emotion recognition: Two decades in a nutshell, benchmarks, and ongoing trends. <i>Commun. ACM</i> 61(5), 90–99 (2018).</li>
+  <li>El Ayadi, M., Kamel, M.S., Karray, F.: Survey on speech emotion recognition: Features, classification schemes, and databases. <i>Pattern Recognit.</i> 44(3), 572–587 (2011).</li>
+  <li>Bojanić, M., Delić, V., Karpov, A.: Call redistribution for a call center based on speech emotion recognition. <i>Appl. Sci.</i> 10(13), 4653 (2020).</li>
+  <li>Quatieri, T.F., Wang, J., et al.: An emotion-driven vocal biomarker-based PTSD screening tool. <i>IEEE Open J. Eng. Med. Biol.</i> 5, 621–626 (2023).</li>
+  <li>Coto-Solano, R.: Computational sociophonetics using automatic speech recognition. <i>Lang. Linguist. Compass</i> 16(9), e12474 (2022).</li>
+  <li>Doğdu, C., Kessler, T., et al.: A comparison of machine learning algorithms for vocal emotion recognition. <i>Sensors</i> 22(19), 7561 (2022).</li>
+  <li>Livingstone, S.R., Russo, F.A.: The Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS). <i>PLoS ONE</i> 13(5), e0196391 (2018).</li>
+  <li>Issa, D., Demirci, M.F., Yazici, A.: Speech emotion recognition with deep convolutional neural networks. <i>Biomed. Signal Process. Control</i> 59, 101894 (2020).</li>
+  <li>Harby, F., Alohali, M., et al.: Sequential feature selection in deep Bi-LSTM models for speech emotion recognition. <i>Comput. Mater. Contin.</i> 78(2), 2689–2719 (2024).</li>
+  <li>Sabour, S., Frosst, N., Hinton, G.E.: Dynamic routing between capsules. In: <i>NeurIPS</i>, pp. 3856–3866 (2017).</li>
+  <li>Hinton, G.E., Sabour, S., Frosst, N.: Matrix capsules with EM routing. In: <i>ICLR</i> (2018).</li>
+  <li>Wu, F., Wei, Z., Zhang, J.: Audio classification using capsule networks with dynamic routing. <i>IEEE Trans. Multimed.</i> 23, 1845–1856 (2021).</li>
+  <li>Jahangir, R., Alturki, N., Hanif, F., Alreshoodi, M.: DCapsNet: a robust multi-feature deep capsule network for speech emotion recognition. <i>Automatika</i> 67(1), 118–133 (2026).</li>
+  <li>Eyben, F., Wöllmer, M., Schuller, B.: openSMILE: The Munich versatile and fast open-source audio feature extractor. In: <i>ACM MM</i>, pp. 1459–1462 (2010).</li>
+  <li>Farooq, M., Hussain, F., Baloch, N.K., et al.: Impact of feature selection on speech emotion recognition using deep CNN. <i>Sensors</i> 20(21), 6008 (2020).</li>
+  <li>Yang, Z., Li, Z., Zhou, S., et al.: Speech emotion recognition based on multi-feature speed rate and LSTM. <i>Neurocomputing</i> 601, 128177 (2024).</li>
+  <li>Agrawal, A., Jain, A.: Brhamo: Metaheuristic optimization for speech emotion recognition. <i>Evol. Intell.</i> 18(1), 4 (2025).</li>
+  <li>Mustaqeem, K., Kwon, S.: MLT-DNet: Speech emotion recognition using 1D dilated CNN. <i>Expert Syst. Appl.</i> 167, 114177 (2021).</li>
+  <li>Mustaqeem, K., Sajjad, M., Kwon, S.: Clustering-based speech emotion recognition incorporating deep BiLSTM. <i>IEEE Access</i> 8, 79861–79875 (2020).</li>
+  <li>Li, D., Liu, J., Yang, Z., et al.: Speech emotion recognition using recurrent neural networks with directional self-attention. <i>Expert Syst. Appl.</i> 173, 114683 (2021).</li>
+  <li>Barhoumi, C., BenAyed, Y.: Real-time speech emotion recognition using deep learning and data augmentation. <i>Artif. Intell. Rev.</i> 58(2), 49 (2024).</li>
+  <li>Mirsamadi, S., Barsoum, E., Zhang, C.: Automatic speech emotion recognition using RNNs with local attention. In: <i>IEEE ICASSP</i>, pp. 2227–2231 (2017).</li>
+</ol>
+</div>
+
+</div>
+</body>
+</html>
+

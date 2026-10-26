@@ -1,0 +1,141 @@
+[
+  {
+    "name": "Baseline (Current Executed)",
+    "params": {
+      "batch_size": 8,
+      "lr": 0.0001,
+      "patience": 10,
+      "dropout": 0.1,
+      "routings": 3,
+      "m_pos": 0.9,
+      "m_neg": 0.1,
+      "use_class_weights": false,
+      "use_reduce_lr": false
+    },
+    "fold_acc": [
+      0.55,
+      0.5229166666666667,
+      0.55
+    ],
+    "mean_acc": 0.5409722222222223,
+    "std_acc": 0.012767205771423781,
+    "macro_f1": 0.5282,
+    "weighted_f1": 0.5355,
+    "time_seconds": null,
+    "class_f1": {
+      "angry": 0.6282,
+      "calm": 0.6621,
+      "disgust": 0.5169,
+      "fear": 0.533,
+      "happy": 0.3879,
+      "neutral": 0.4181,
+      "sad": 0.493,
+      "surprise": 0.5863
+    }
+  },
+  {
+    "name": "Config 1: Batch-16 + Dynamic LR Decay",
+    "params": {
+      "batch_size": 16,
+      "lr": 0.0003,
+      "epochs": 30,
+      "patience": 8,
+      "dropout": 0.1,
+      "routings": 3,
+      "m_pos": 0.9,
+      "m_neg": 0.1,
+      "use_class_weights": false,
+      "use_reduce_lr": true
+    },
+    "fold_acc": [
+      0.5458333333333333,
+      0.5354166666666667,
+      0.5479166666666667
+    ],
+    "mean_acc": 0.5430555555555555,
+    "std_acc": 0.005468061023619327,
+    "macro_f1": 0.5273580262108883,
+    "weighted_f1": 0.5370470631642734,
+    "time_seconds": 751.2,
+    "class_f1": {
+      "angry": 0.644,
+      "calm": 0.6897,
+      "disgust": 0.5383,
+      "fear": 0.4896,
+      "happy": 0.4109,
+      "neutral": 0.382,
+      "sad": 0.4392,
+      "surprise": 0.6253
+    }
+  },
+  {
+    "name": "Config 2: Class-Balanced + Soft Margin (0.80/0.20)",
+    "params": {
+      "batch_size": 16,
+      "lr": 0.0003,
+      "epochs": 30,
+      "patience": 8,
+      "dropout": 0.1,
+      "routings": 3,
+      "m_pos": 0.8,
+      "m_neg": 0.2,
+      "use_class_weights": true,
+      "use_reduce_lr": true
+    },
+    "fold_acc": [
+      0.5208333333333334,
+      0.5354166666666667,
+      0.5854166666666667
+    ],
+    "mean_acc": 0.5472222222222222,
+    "std_acc": 0.027655982988527613,
+    "macro_f1": 0.5318384894728316,
+    "weighted_f1": 0.5429216289143894,
+    "time_seconds": 970.9,
+    "class_f1": {
+      "angry": 0.6305,
+      "calm": 0.7005,
+      "disgust": 0.545,
+      "fear": 0.5139,
+      "happy": 0.4171,
+      "neutral": 0.3656,
+      "sad": 0.4882,
+      "surprise": 0.594
+    }
+  },
+  {
+    "name": "Config 3: High Regularization (0.25 Dropout) + 2-Step Routing",
+    "params": {
+      "batch_size": 32,
+      "lr": 0.0004,
+      "epochs": 35,
+      "patience": 8,
+      "dropout": 0.25,
+      "routings": 2,
+      "m_pos": 0.85,
+      "m_neg": 0.15,
+      "use_class_weights": false,
+      "use_reduce_lr": true
+    },
+    "fold_acc": [
+      0.5666666666666667,
+      0.5416666666666666,
+      0.55
+    ],
+    "mean_acc": 0.5527777777777778,
+    "std_acc": 0.01039349274103873,
+    "macro_f1": 0.5357884143196854,
+    "weighted_f1": 0.5456028800362358,
+    "time_seconds": 911.4,
+    "class_f1": {
+      "angry": 0.6415,
+      "calm": 0.6593,
+      "disgust": 0.5831,
+      "fear": 0.533,
+      "happy": 0.4049,
+      "neutral": 0.3886,
+      "sad": 0.4365,
+      "surprise": 0.6394
+    }
+  }
+]
